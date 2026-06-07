@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI行业学习就业完全指南 · 国内版</title>
+<style>
+  :root {
+    --bg: #08080f;
+    --card: #11111c;
+    --border: #222238;
+    --text: #d0d0e0;
+    --muted: #8080a0;
+    --accent: #6c5ce7;
+    --accent2: #00cec9;
+    --accent3: #fd79a8;
+    --accent4: #fdcb6e;
+    --accent5: #00b894;
+    --radius: 10px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.75; font-size: 15px;
+    padding-bottom: 80px;
+  }
+  a { color: var(--accent2); text-decoration: none; transition: color .15s; }
+  a:hover { color: var(--accent3); text-decoration: underline; }
+  a:visited { color: #8a8aff; }
+  a.ext::after { content: " ↗"; font-size: 11px; opacity: 0.5; }
+
+  /* Hero */
+  .hero {
+    text-align: center; padding: 70px 24px 50px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(108,92,231,0.15) 0%, transparent 60%);
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 48px); font-weight: 800;
+    background: linear-gradient(135deg, var(--accent2), var(--accent), var(--accent3));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero .sub { color: var(--muted); font-size: 15px; max-width: 640px; margin: 10px auto 0; }
+  .hero .tips {
+    margin-top: 14px; font-size: 12px; color: var(--muted);
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  }
+  .hero .tips span { background: rgba(108,92,231,0.08); padding: 3px 10px; border-radius: 12px; border: 1px solid var(--border); }
+
+  /* Nav */
+  .nav-wrap { position: sticky; top: 0; z-index: 100; background: rgba(8,8,15,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-inner { max-width: 1060px; margin:0 auto; padding:0 12px; display:flex; gap:2px; overflow-x:auto; }
+  .nav-inner a {
+    display:inline-block; padding:12px 14px; font-size:12.5px; color:var(--muted);
+    white-space:nowrap; transition:all .2s; border-bottom:2px solid transparent; cursor:pointer;
+  }
+  .nav-inner a:hover, .nav-inner a.active { color:var(--accent2); border-bottom-color:var(--accent2); }
+
+  /* Layout */
+  .container { max-width: 1020px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 44px 0; }
+  .sec-title {
+    font-size: 24px; font-weight: 700; margin-bottom: 4px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .sec-title .icon { font-size: 26px; }
+  .sec-desc { color: var(--muted); margin-bottom: 26px; font-size: 14px; }
+
+  /* Cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 14px; margin-bottom: 20px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 22px; transition: border-color .2s;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card h3 { font-size: 16px !important; margin-bottom: 10px; display:flex; align-items:center; gap:6px; }
+  .card ul { list-style:none; padding:0; }
+  .card li { padding:5px 0; color:var(--muted); font-size:13.5px; }
+  .card li::before { content:"▸"; color:var(--accent); margin-right:8px; flex-shrink:0; }
+
+  /* Tables */
+  .tbl-wrap { overflow-x:auto; margin:12px 0; border-radius: var(--radius); border:1px solid var(--border); }
+  table { width:100%; border-collapse:collapse; font-size:13.5px; }
+  th { background: var(--card); color: var(--accent2); padding:10px 12px; text-align:left; font-weight:600; border-bottom:2px solid var(--border); white-space:nowrap; }
+  td { padding:9px 12px; border-bottom:1px solid var(--border); color:var(--muted); }
+  tr:last-child td { border-bottom:none; }
+  tr:hover td { background:rgba(108,92,231,0.05); }
+
+  /* Phase grid */
+  .phase-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:14px; }
+  .phase-card {
+    background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+    padding:20px 20px 16px; position:relative; overflow:hidden;
+  }
+  .phase-card .p-num {
+    position:absolute; top:6px; right:14px; font-size:44px; font-weight:800;
+    color:rgba(108,92,231,0.06); pointer-events:none; line-height:1;
+  }
+  .phase-card h4 { font-size:15px; margin-bottom:3px; position:relative; }
+  .phase-card .p-time { font-size:12px; color:var(--accent2); font-weight:600; margin-bottom:8px; }
+  .phase-card ul { list-style:none; padding:0; position:relative; }
+  .phase-card li { font-size:13px; color:var(--muted); padding:3px 0; }
+  .phase-card li::before { content:"•"; color:var(--accent); margin-right:6px; }
+
+  /* Q&A Accordion */
+  .qa { margin:10px 0; }
+  .qa-q {
+    background: var(--card); border:1px solid var(--border); border-radius:var(--radius);
+    padding:14px 18px; cursor:pointer; font-weight:600; font-size:14.5px;
+    display:flex; align-items:center; gap:10px; user-select:none;
+    transition: border-color .2s;
+  }
+  .qa-q:hover { border-color: var(--accent); }
+  .qa-q .arrow { transition:transform .25s; color:var(--accent); flex-shrink:0; font-size:13px; }
+  .qa.open .qa-q .arrow { transform:rotate(90deg); }
+  .qa-a {
+    display:none; padding:14px 18px 16px 40px;
+    background:rgba(108,92,231,0.03); border-left:2px solid var(--accent);
+    font-size:14px; color:var(--muted); margin:3px 0 0 0;
+  }
+  .qa.open .qa-a { display:block; }
+  .qa-a p { margin:8px 0; }
+  .qa-a ul, .qa-a ol { padding-left:20px; margin:6px 0; }
+  .qa-a li { margin:3px 0; }
+
+  /* Highlight boxes */
+  .box {
+    padding:14px 18px; border-radius:var(--radius); margin:10px 0; font-size:13.5px;
+  }
+  .box.tip { background:rgba(0,206,201,0.06); border:1px solid rgba(0,206,201,0.2); }
+  .box.warn { background:rgba(253,121,168,0.06); border:1px solid rgba(253,121,168,0.2); }
+  .box.info { background:rgba(108,92,231,0.06); border:1px solid rgba(108,92,231,0.2); }
+  .box strong { display:block; margin-bottom:4px; }
+
+  /* Skill bars */
+  .skill { display:flex; align-items:center; gap:10px; margin:6px 0; }
+  .skill .lbl { width:150px; text-align:right; font-size:12.5px; color:var(--muted); flex-shrink:0; }
+  .skill .track { flex:1; height:7px; background:var(--border); border-radius:4px; overflow:hidden; }
+  .skill .fill { height:100%; border-radius:4px; }
+
+  /* Tabs */
+  .tab-bar { display:flex; gap:4px; margin-bottom:18px; flex-wrap:wrap; }
+  .tab-btn {
+    padding:7px 16px; border-radius:20px; border:1px solid var(--border);
+    background:transparent; color:var(--muted); cursor:pointer;
+    font-size:13px; font-family:inherit; transition:all .2s; white-space:nowrap;
+  }
+  .tab-btn.active, .tab-btn:hover { border-color:var(--accent); color:#fff; background:rgba(108,92,231,0.12); }
+  .tab-panel { display:none; }
+  .tab-panel.active { display:block; }
+
+  /* Tags */
+  .tags { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0; }
+  .tag { padding:5px 12px; border-radius:20px; border:1px solid var(--border); font-size:12.5px; color:var(--muted); white-space:nowrap; }
+  .tag a { color:var(--muted); }
+  .tag a:hover { color:var(--accent2); }
+  .tag.hot { border-color:var(--accent3); }
+  .tag.hot a { color:var(--accent3); }
+  .tag.rec { border-color:var(--accent2); }
+  .tag.rec a { color:var(--accent2); }
+
+  /* Company grid */
+  .co-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap:10px; }
+  .co-card {
+    background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+    padding:14px; text-align:center; font-size:13px;
+  }
+  .co-card .co-name { font-weight:700; color:#fff; margin-bottom:3px; }
+  .co-card .co-info { font-size:11.5px; color:var(--muted); }
+
+  /* Back to top */
+  .btt {
+    position:fixed; bottom:28px; right:28px; width:42px; height:42px;
+    border-radius:50%; background:var(--accent); color:#fff; border:none;
+    cursor:pointer; font-size:18px; opacity:0.65; transition:opacity .2s; z-index:200;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .btt:hover { opacity:1; }
+
+  /* Section divider */
+  .divider { border:0; border-top:1px solid var(--border); margin:0; }
+
+  /* Tooltip for ext links */
+  .link-note { font-size:11px; color:var(--muted); font-style:italic; }
+
+  /* Responsive */
+  @media (max-width:640px) {
+    .skill .lbl { width:100px; font-size:11px; }
+    .nav-inner a { padding:10px 8px; font-size:11px; }
+    .hero { padding:44px 14px 32px; }
+    .phase-grid { grid-template-columns: 1fr; }
+    .co-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* Print */
+  @media print {
+    .nav-wrap, .btt, .hero .tips { display:none; }
+    body { background:#fff; color:#000; font-size:12px; }
+    .card, .qa-q, .box, .phase-card, .co-card { background:#f9f9f9; border:1px solid #ddd; }
+    a { color:#00c; }
+    a::after { content:"" !important; }
+    section { page-break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero">
+  <h1>进击 AI 行业 · 完全指南</h1>
+  <p class="sub">28 周学习计划 + 三大就业方向 + 35 道面试问答<br>所有资源一键直达，全部国内网络环境可用 🇨🇳</p>
+  <div class="tips">
+    <span>💡 蓝色文字 = 可点击直达</span>
+    <span>↗ = 外部链接</span>
+    <span>📱 手机浏览器也能看</span>
+    <span>🖨️ 支持打印</span>
+    <span>💾 换电脑复制这个 .html 即可</span>
+  </div>
+</header>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="nav-wrap">
+  <div class="nav-inner">
+    <a href="#plan">📅 学习计划</a>
+    <a href="#career">🎯 就业方向</a>
+    <a href="#interview">💡 面试问答</a>
+    <a href="#checklist">✅ 行动清单</a>
+    <a href="#tools">🧰 工具平台</a>
+    <a href="#certs">📜 认证</a>
+    <a href="#pitfalls">⚠️ 避坑</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ════════════════════ 核心数据 ════════════════════ -->
+<section>
+  <div class="cards">
+    <div class="card" style="text-align:center;">
+      <div style="font-size:34px;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">50万+</div>
+      <div style="color:var(--muted);font-size:13px;">全球 AI 人才缺口</div>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-size:34px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">28-40%</div>
+      <div style="color:var(--muted);font-size:13px;">AI 技能薪资溢价</div>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-size:34px;font-weight:800;background:linear-gradient(135deg,var(--accent3),var(--accent4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">20-35万</div>
+      <div style="color:var(--muted);font-size:13px;">入门级岗位年薪 (国内一线)</div>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-size:34px;font-weight:800;background:linear-gradient(135deg,var(--accent4),var(--accent5));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">65%+</div>
+      <div style="color:var(--muted);font-size:13px;">应用开发岗占 AI 岗位比例</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ════════════════════ 一 学习计划 ════════════════════ -->
+<section id="plan">
+  <div class="sec-title"><span class="icon">📅</span> 28 周详细学习计划</div>
+  <p class="sec-desc">从零基础到可投递简历。点击 <span style="color:var(--accent2);">蓝色文字</span> 直达对应资源。总原则：<strong>不求精通证明，但求动手能写</strong>。</p>
+
+  <!-- 总览 -->
+  <div class="phase-grid">
+    <div class="phase-card" style="border-top:3px solid var(--accent);">
+      <div class="p-num">01</div>
+      <h4>Phase 1 · 基础期</h4>
+      <div class="p-time">第 1-10 周</div>
+      <ul>
+        <li>Python 数据处理三件套</li>
+        <li>线性代数 + 概率论核心</li>
+        <li>Scikit-learn 经典 ML</li>
+        <li><a class="ext" href="https://tianchi.aliyun.com">天池</a> / <a class="ext" href="https://www.heywhale.com">和鲸社区</a> 入门赛</li>
+        <li style="color:var(--accent2);">📺 <a href="https://search.bilibili.com/all?keyword=黑马程序员+Python">B站：黑马程序员 Python</a></li>
+      </ul>
+    </div>
+    <div class="phase-card" style="border-top:3px solid var(--accent2);">
+      <div class="p-num">02</div>
+      <h4>Phase 2 · 进阶期</h4>
+      <div class="p-time">第 11-18 周</div>
+      <ul>
+        <li>PyTorch 框架精通</li>
+        <li>CNN/RNN/Transformer 架构</li>
+        <li>李沐「<a class="ext" href="https://zh.d2l.ai">动手学深度学习</a>」</li>
+        <li>LLaMA-Factory 微调实战</li>
+        <li style="color:var(--accent2);">💻 <a href="https://www.autodl.com">AutoDL</a> 租 GPU · <a href="https://hf-mirror.com">hf-mirror</a> 下模型</li>
+      </ul>
+    </div>
+    <div class="phase-card" style="border-top:3px solid var(--accent3);">
+      <div class="p-num">03</div>
+      <h4>Phase 3 · 实战期</h4>
+      <div class="p-time">第 19-24 周</div>
+      <ul>
+        <li>RAG 全栈 (Milvus + Dify)</li>
+        <li>Agent 开发 (Coze/LangGraph)</li>
+        <li>3 个完整项目上 <a class="ext" href="https://gitee.com">Gitee</a></li>
+        <li>FastAPI + 云端部署</li>
+        <li style="color:var(--accent2);">🔧 <a href="https://dify.ai">Dify</a> · <a href="https://www.coze.cn">Coze 扣子</a></li>
+      </ul>
+    </div>
+    <div class="phase-card" style="border-top:3px solid var(--accent4);">
+      <div class="p-num">04</div>
+      <h4>Phase 4 · 工程化</h4>
+      <div class="p-time">持续进行</div>
+      <ul>
+        <li>Docker 容器化</li>
+        <li>模型量化 (AWQ/GPTQ)</li>
+        <li>vLLM 推理加速</li>
+        <li><a class="ext" href="https://www.aliyun.com/product/bigdata/learn">阿里云 PAI</a> / 云效 CI/CD</li>
+        <li style="color:var(--accent2);">☁️ <a href="https://developer.aliyun.com">阿里云开发者社区</a></li>
+      </ul>
+    </div>
+    <div class="phase-card" style="border-top:3px solid var(--accent5);">
+      <div class="p-num">05</div>
+      <h4>Phase 5 · 深化期</h4>
+      <div class="p-time">持续进行</div>
+      <ul>
+        <li><a class="ext" href="https://gitee.com/explore/all?order=latest">Gitee</a> 开源项目贡献</li>
+        <li>论文跟踪（<a class="ext" href="https://www.jiqizhixin.com">机器之心</a>）</li>
+        <li>阿里云/华为云 AI 认证</li>
+        <li><a class="ext" href="https://juejin.cn">掘金</a> / <a class="ext" href="https://www.zhihu.com">知乎</a> 技术输出</li>
+        <li style="color:var(--accent2);">📝 <a href="https://www.bilibili.com">B站</a> 持续学习</li>
+      </ul>
+    </div>
+  </div>
+
+  <br>
+
+  <!-- 第1-2周 -->
+  <div class="qa">
+    <div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> 第 1-2 周：Python 数据栈（点击展开每日计划 + 直达链接）</div>
+    <div class="qa-a">
+      <div class="tbl-wrap"><table>
+        <tr><th>天数</th><th>内容</th><th>直达链接</th></tr>
+        <tr><td>Day 1-3</td><td>Python 基础：列表推导式、lambda、装饰器、上下文管理器</td><td><a class="ext" href="https://search.bilibili.com/all?keyword=黑马程序员+Python+零基础">B站：黑马程序员 Python 零基础</a></td></tr>
+        <tr><td>Day 4-5</td><td>NumPy：数组运算、广播机制、向量化（不用 for 循环写矩阵乘法）</td><td><a class="ext" href="https://www.heywhale.com">和鲸社区 (Heywhale)</a> 搜 NumPy 教程</td></tr>
+        <tr><td>Day 6-7</td><td>Pandas：DataFrame、groupby、merge、pivot、完整 EDA</td><td><a class="ext" href="https://www.heywhale.com">和鲸社区</a> 搜 Pandas 实战</td></tr>
+        <tr><td>Day 8-9</td><td>Matplotlib + Seaborn：10 种图表，为 EDA 配可视化报告</td><td><a class="ext" href="https://www.heywhale.com">和鲸社区</a> 数据可视化 Notebook</td></tr>
+        <tr><td>Day 10</td><td>Jupyter + Conda 环境管理（清华镜像源配置）</td><td><a class="ext" href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">清华 Anaconda 镜像帮助</a></td></tr>
+      </table></div>
+      <div class="box tip"><strong>💡 pip 镜像加速</strong><code>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple 包名</code><br>conda 配置：<a class="ext" href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">清华镜像站 → Anaconda 帮助</a></div>
+    </div>
+  </div>
+
+  <!-- 第3-5周 -->
+  <div class="qa">
+    <div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> 第 3-5 周：数学核心（线性代数 + 概率论 + 微积分 + 优化）</div>
+    <div class="qa-a">
+      <div class="tbl-wrap"><table>
+        <tr><th>主题</th><th>资源直达</th><th>掌握程度</th></tr>
+        <tr><td>线性代数</td><td><a class="ext" href="https://www.bilibili.com/video/BV1ys411472E">B站：3Blue1Brown「线性代数的本质」中文版</a> + <a class="ext" href="https://www.bilibili.com/video/BV1zx411g7gq">MIT 18.06 中文字幕</a></td><td>矩阵运算、特征值、SVD、PCA 直觉</td></tr>
+        <tr><td>概率论</td><td><a class="ext" href="https://www.icourse163.org/search.htm?search=概率论与数理统计">中国大学 MOOC：概率论与数理统计</a></td><td>贝叶斯、条件概率、高斯分布、最大似然</td></tr>
+        <tr><td>微积分</td><td><a class="ext" href="https://www.bilibili.com/video/BV1qW411N7FU">B站：3Blue1Brown「微积分的本质」</a></td><td>梯度、链式法则、梯度下降推导</td></tr>
+        <tr><td>优化理论</td><td><a class="ext" href="https://www.bilibili.com/video/BV1Wv411h7kN">B站：李宏毅机器学习</a>（优化部分在课程前几讲）</td><td>SGD/Adam 的公式理解和直觉</td></tr>
+      </table></div>
+      <div class="box info"><strong>📌 原则</strong>不求手算矩阵求逆，但求理解「为什么梯度下降能工作」。数学是工具，不是目的。</div>
+    </div>
+  </div>
+
+  <!-- 第6-10周 -->
+  <div class="qa">
+    <div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> 第 6-10 周：经典机器学习（Scikit-learn + 天池实战）</div>
+    <div class="qa-a">
+      <div class="tbl-wrap"><table>
+        <tr><th>周</th><th>内容</th><th>直达链接</th></tr>
+        <tr><td>6-7</td><td>监督学习：线性回归→逻辑回归→SVM→决策树→随机森林→XGBoost</td><td><a class="ext" href="https://www.bilibili.com/video/BV164411b7dx">B站：吴恩达机器学习</a> + <a class="ext" href="https://scikit-learn.org.cn">Scikit-learn 中文文档</a></td></tr>
+        <tr><td>8</td><td>无监督学习：K-Means→DBSCAN→PCA→t-SNE；评估指标：交叉验证、ROC/AUC、F1</td><td><a class="ext" href="https://www.heywhale.com">和鲸社区</a> 搜「机器学习实战」Notebook</td></tr>
+        <tr><td>9</td><td>特征工程：归一化、独热编码、特征交叉、缺失值处理</td><td><a class="ext" href="https://tianchi.aliyun.com/dataset">天池数据集</a> + <a class="ext" href="https://www.heywhale.com">和鲸数据集</a></td></tr>
+        <tr><td>10</td><td><strong>实战</strong>：天池新人赛（工业蒸汽量预测 / O2O 优惠券预测），目标 Top 50%</td><td><a class="ext" href="https://tianchi.aliyun.com/competition/gameList/activeList">阿里云天池：全部比赛</a></td></tr>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- 第11-13周 -->
+  <div class="qa">
+    <div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> 第 11-13 周：PyTorch 精通</div>
+    <div class="qa-a">
+      <p><strong>主线资源</strong>：<a class="ext" href="https://zh.d2l.ai">李沐「动手学深度学习」d2l.ai</a> — 天花板级中文教程，代码+公式+视频三合一</p>
+      <p>配套视频：<a class="ext" href="https://space.bilibili.com/1567748478">B站 李沐主页</a></p>
+      <div class="tbl-wrap"><table>
+        <tr><th>周</th><th>内容</th><th>直达链接</th></tr>
+        <tr><td>11</td><td>Tensor 操作、Autograd 自动求导、Dataset/DataLoader 管道、nn.Module 构建</td><td><a class="ext" href="https://zh.d2l.ai/chapter_preliminaries/index.html">d2l：预备知识</a> + <a class="ext" href="https://zh.d2l.ai/chapter_deep-learning-computation/index.html">深度学习计算</a></td></tr>
+        <tr><td>12</td><td>训练循环模板（train/val/test + early stopping + 学习率调度）</td><td><a class="ext" href="https://zh.d2l.ai/chapter_linear-networks/index.html">d2l：线性网络</a> + <a class="ext" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/index.html">多层感知机</a></td></tr>
+        <tr><td>13</td><td><strong>动手实现</strong>：纯 PyTorch 写 MNIST 分类器 + ResNet 完成 CIFAR-10</td><td><a class="ext" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/index.html">d2l：卷积神经网络</a> + <a class="ext" href="https://zh.d2l.ai/chapter_modern-convnets/index.html">现代卷积架构</a></td></tr>
+      </table></div>
+      <div class="box tip"><strong>💡 GPU 算力</strong><a class="ext" href="https://www.autodl.com">AutoDL</a> 或 <a class="ext" href="https://gpushare.com">恒源云 GPUShare</a> — 按小时租 GPU，学生价 RTX 4090 约 2-4 元/小时。新用户通常有免费额度。</div>
+    </div>
+  </div>
+
+  <!-- 第14-15周 -->
+  <div class="qa">
+    <div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> 第 14-15 周：深度学习核心架构（CNN → RNN → Transformer）</div>
+    <div class="qa-a">
+      <div class="tbl-wrap"><table>
+        <tr><th>主题</th><th>关键点</th><th>直达链接</th></tr>
+        <tr><td>CNN</td><td>卷积/池化/感受野、ResNet 残差连接思想</td><td><a class="ext" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/index.html">d2l：CNN 章节</a></td></tr>
+        <tr><td>RNN/LSTM/GRU</td><td>序列建模、梯度消失/爆炸、门控机制</td><td><a class="ext" href="https://zh.d2l.ai/chapter_recurrent-neural-networks/index.html">d2l：RNN 章节</a></td></tr>
+        <tr><td><strong>Transformer</strong></td><td>Self-Attention Q/K/V、Multi-Head、位置编码、LayerNorm、残差连接</td><td><a class="ext" href="https://www.bilibili.com/video/BV1pu411o7BE">B站：李沐论文精读 · Attention Is All You Need</a></td></tr>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- 第16-18周 -->
+  <div class="qa">
+    <div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> 第 16-18 周：模型微调实战（国内方案全链路）</div>
+    <div class="qa-a">
+      <div class="tbl-wrap"><table>
+        <tr><th>环节</th><th>国内方案</th><th>直达链接</th></tr>
+        <tr><td>模型获取</td><td><strong>ModelScope 魔搭</strong>（国产模型首发，满速下载）</td><td><a class="ext" href="https://modelscope.cn">modelscope.cn</a></td></tr>
+        <tr><td>HF 镜像</td><td>HuggingFace 完美镜像，下载模型满速</td><td><a class="ext" href="https://hf-mirror.com">hf-mirror.com</a></td></tr>
+        <tr><td>首选模型</td><td>Qwen2.5（阿里通义）/ ChatGLM（智谱）/ DeepSeek</td><td><a class="ext" href="https://modelscope.cn/organization/qwen">魔搭：Qwen 系列</a> · <a class="ext" href="https://open.bigmodel.cn">智谱开放平台</a> · <a class="ext" href="https://platform.deepseek.com">DeepSeek 平台</a></td></tr>
+        <tr><td>微调框架</td><td><strong>LLaMA-Factory</strong> — 国产微调框架，一行命令 LoRA 微调</td><td><a class="ext" href="https://search.bilibili.com/all?keyword=LLaMA-Factory+微调">B站：LLaMA-Factory 手把手教程</a></td></tr>
+        <tr><td>GPU 平台</td><td>AutoDL / 恒源云 — 按小时租 A100/4090</td><td><a class="ext" href="https://www.autodl.com">AutoDL</a> · <a class="ext" href="https://gpushare.com">恒源云</a></td></tr>
+        <tr><td>训练数据</td><td>国内开源数据集平台</td><td><a class="ext" href="https://tianchi.aliyun.com/dataset">天池数据集</a> · <a class="ext" href="https://modelscope.cn/datasets">魔搭数据集</a></td></tr>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- 第19-20周 -->
+  <div class="qa">
+    <div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> 第 19-20 周：RAG 全栈（检索增强生成）</div>
+    <div class="qa-a">
+      <div class="tbl-wrap"><table>
+        <tr><th>环节</th><th>国内工具</th><th>直达链接</th></tr>
+        <tr><td>Embedding</td><td><strong>BGE 系列</strong>（BAAI 智源研究院）</td><td><a class="ext" href="https://hf-mirror.com/BAAI">hf-mirror：BAAI 模型列表</a></td></tr>
+        <tr><td>向量数据库</td><td><strong>Milvus</strong>（国产开源，Zilliz 出品，生产首选）</td><td><a class="ext" href="https://milvus.io">Milvus 官网</a>（国内可访问）</td></tr>
+        <tr><td>轻量原型</td><td>ChromaDB — Python-native，零配置</td><td><a class="ext" href="https://www.trychroma.com">ChromaDB 官网</a></td></tr>
+        <tr><td>应用框架</td><td>LangChain / LlamaIndex</td><td><a class="ext" href="https://python.langchain.com">LangChain 文档</a>（国内可访问）</td></tr>
+        <tr><td>可视化搭建</td><td><strong>Dify</strong> — 国产开源，拖拽式搭建 RAG 应用</td><td><a class="ext" href="https://dify.ai">Dify 官网</a> · <a class="ext" href="https://search.bilibili.com/all?keyword=Dify+RAG">B站：Dify 搭建 RAG 教程</a></td></tr>
+      </table></div>
+      <div class="box tip"><strong>💡 项目 1：企业知识库问答系统</strong>BGE Embedding + Milvus + Dify + Qwen2.5，导入你自己的笔记/PDF，用自然语言查询。教程：<a class="ext" href="https://search.bilibili.com/all?keyword=Dify+知识库+搭建">B站搜「Dify 知识库搭建」</a></div>
+    </div>
+  </div>
+
+  <!-- 第21-22周 -->
+  <div class="qa">
+    <div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> 第 21-22 周：Agent 开发（智能体）</div>
+    <div class="qa-a">
+      <div class="tbl-wrap"><table>
+        <tr><th>层级</th><th>工具</th><th>直达链接</th></tr>
+        <tr><td>入门</td><td><strong>Coze 扣子</strong> — 字节出品，零代码配 Agent</td><td><a class="ext" href="https://www.coze.cn">coze.cn</a></td></tr>
+        <tr><td>应用</td><td><strong>Dify</strong> 内置 Agent 模式 — 可视化编排工具调用 + 知识库</td><td><a class="ext" href="https://dify.ai">Dify</a> → 创建应用 → 选择 Agent 模式</td></tr>
+        <tr><td>进阶</td><td>LangGraph + CrewAI — 代码级 Multi-Agent 编排</td><td><a class="ext" href="https://search.bilibili.com/all?keyword=LangGraph+教程">B站：LangGraph 教程</a></td></tr>
+        <tr><td>协议</td><td>MCP 协议 — AI 与外部工具交互标准</td><td><a class="ext" href="https://modelscope.cn">ModelScope</a> 已支持 MCP · <a class="ext" href="https://search.bilibili.com/all?keyword=MCP+协议+教程">B站：MCP 协议教程</a></td></tr>
+      </table></div>
+      <div class="box tip"><strong>💡 项目 2：多 Agent 协作系统</strong>Coze 或 CrewAI + 通义千问 API，设计「搜索→总结→校验」的 Agent 管道。</div>
+    </div>
+  </div>
+
+  <!-- 第23-24周 -->
+  <div class="qa">
+    <div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> 第 23-24 周：应用落地（API + 部署 + 展示）</div>
+    <div class="qa-a">
+      <div class="tbl-wrap"><table>
+        <tr><th>环节</th><th>国内方案</th><th>直达链接</th></tr>
+        <tr><td>API 服务</td><td>FastAPI 构建 AI API（异步、流式 SSE）</td><td><a class="ext" href="https://fastapi.tiangolo.com/zh/">FastAPI 中文文档</a></td></tr>
+        <tr><td>交互界面</td><td>Gradio / Streamlit</td><td><a class="ext" href="https://www.gradio.app">Gradio 官网</a> · <a class="ext" href="https://streamlit.io">Streamlit 官网</a></td></tr>
+        <tr><td>模型服务</td><td>阿里云 PAI-EAS / 百度千帆 / 华为 ModelArts</td><td><a class="ext" href="https://www.aliyun.com/product/bigdata/learn">阿里云 PAI</a> · <a class="ext" href="https://cloud.baidu.com/product/wenxinworkshop">百度千帆</a></td></tr>
+        <tr><td>代码托管</td><td><strong>Gitee</strong> 主仓 + GitHub 镜像</td><td><a class="ext" href="https://gitee.com">Gitee</a> · <a class="ext" href="https://gitee.com/pages">Gitee Pages</a>（免费静态网站托管）</td></tr>
+        <tr><td>Docker 镜像</td><td>阿里云容器镜像服务（替代 Docker Hub）</td><td><a class="ext" href="https://cr.console.aliyun.com">阿里云容器镜像</a></td></tr>
+      </table></div>
+      <div class="box tip"><strong>💡 项目 3：端到端 AI 应用</strong>智能客服 / 文档分析工具 / 代码审查助手。包含前端界面 + API + 数据库 + 云端部署。<br>部署教程：<a class="ext" href="https://search.bilibili.com/all?keyword=FastAPI+部署+阿里云">B站搜「FastAPI 部署 阿里云」</a></div>
+    </div>
+  </div>
+
+  <!-- Phase 4-5 工程化+深化 -->
+  <div class="qa">
+    <div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Phase 4-5：工程化 + 深化期（持续进行）</div>
+    <div class="qa-a">
+      <div class="tbl-wrap"><table>
+        <tr><th>阶段</th><th>模块</th><th>直达链接</th></tr>
+        <tr><td rowspan="5">工程化</td><td>Docker 容器化 AI 应用</td><td><a class="ext" href="https://search.bilibili.com/all?keyword=Docker+教程+2024">B站：Docker 教程</a> + <a class="ext" href="https://cr.console.aliyun.com">阿里云容器镜像</a></td></tr>
+        <tr><td>模型量化 AWQ / GPTQ</td><td><a class="ext" href="https://search.bilibili.com/all?keyword=模型量化+AWQ+GPTQ">B站：模型量化教程</a> + <a class="ext" href="https://hf-mirror.com">hf-mirror</a> 下载量化模型</td></tr>
+        <tr><td>vLLM 推理加速</td><td><a class="ext" href="https://search.bilibili.com/all?keyword=vLLM+部署">B站：vLLM 部署教程</a> + <a class="ext" href="https://modelscope.cn">魔搭</a> 一键部署</td></tr>
+        <tr><td>阿里云 PAI 全链路 ML</td><td><a class="ext" href="https://www.aliyun.com/product/bigdata/learn">阿里云 PAI</a> · 新用户免费试用</td></tr>
+        <tr><td>CI/CD 流水线</td><td><a class="ext" href="https://www.aliyun.com/product/yunxiao">阿里云云效</a>（免费额度）</td></tr>
+        <tr><td rowspan="4">深化期</td><td>开源贡献</td><td><a class="ext" href="https://gitee.com/explore/all?order=latest">Gitee 热门 AI 项目</a>：Dify / LLaMA-Factory / PaddleNLP / ChatGLM</td></tr>
+        <tr><td>论文跟踪</td><td><a class="ext" href="https://www.jiqizhixin.com">机器之心</a> · <a class="ext" href="https://www.paperweekly.cn">PaperWeekly</a>（中文解读）</td></tr>
+        <tr><td>技术输出</td><td><a class="ext" href="https://juejin.cn">掘金</a> · <a class="ext" href="https://www.zhihu.com">知乎</a> · <a class="ext" href="https://blog.csdn.net">CSDN</a> · <a class="ext" href="https://segmentfault.com">思否</a></td></tr>
+        <tr><td>持续学习</td><td><a class="ext" href="https://www.bilibili.com">B站</a> 搜最新 AI 教程 · <a class="ext" href="https://developer.aliyun.com">阿里云开发者社区</a> · <a class="ext" href="https://space.bilibili.com/1567748478">李沐 B站</a></td></tr>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- 完整时间线总览 -->
+  <br>
+  <h4 style="margin-bottom:10px;">🗺️ 完整时间线一览</h4>
+  <div class="tbl-wrap"><table>
+    <tr><th>周次</th><th>阶段</th><th>核心任务</th><th>产出</th></tr>
+    <tr><td>1-2</td><td>Python 数据栈</td><td>NumPy + Pandas + 可视化</td><td>一份完整 EDA 报告</td></tr>
+    <tr><td>3-5</td><td>数学核心</td><td>线代 + 概率 + 微积分</td><td>数学基础扎实</td></tr>
+    <tr><td>6-10</td><td>经典 ML</td><td>Scikit-learn + 天池比赛</td><td>天池比赛 Top 50%</td></tr>
+    <tr><td>11-13</td><td>PyTorch</td><td>d2l 全书 + 动手实现</td><td>MNIST + CIFAR-10 分类器</td></tr>
+    <tr><td>14-15</td><td>深度架构</td><td>CNN→RNN→Transformer</td><td>读懂 Attention 论文</td></tr>
+    <tr><td>16-18</td><td>模型微调</td><td>LoRA/QLoRA + LLaMA-Factory</td><td>微调一个中文模型</td></tr>
+    <tr><td>19-20</td><td>RAG 全栈</td><td>BGE + Milvus + Dify</td><td>项目 1：知识库问答系统</td></tr>
+    <tr><td>21-22</td><td>Agent 开发</td><td>Coze + LangGraph + MCP</td><td>项目 2：多 Agent 协作系统</td></tr>
+    <tr><td>23-24</td><td>应用落地</td><td>FastAPI + 云部署 + Gitee</td><td>项目 3：端到端 AI 应用</td></tr>
+    <tr><td>25+</td><td>工程化+深化</td><td>Docker + 量化 + CI/CD + 开源</td><td>可投递简历状态 🔥</td></tr>
+  </table></div>
+</section>
+
+<hr class="divider">
+
+<!-- ════════════════════ 技能重要度 ════════════════════ -->
+<section>
+  <div class="sec-title"><span class="icon">📊</span> 核心技能重要度</div>
+  <p class="sec-desc">基于 2026 年国内 AI 岗位描述统计的需求热度</p>
+  <div class="skill"><span class="lbl">Python 编程</span><div class="track"><div class="fill" style="width:98%;background:var(--accent2);"></div></div></div>
+  <div class="skill"><span class="lbl">LLM / RAG</span><div class="track"><div class="fill" style="width:92%;background:var(--accent3);"></div></div></div>
+  <div class="skill"><span class="lbl">PyTorch</span><div class="track"><div class="fill" style="width:90%;background:var(--accent);"></div></div></div>
+  <div class="skill"><span class="lbl">ML / DL 基础</span><div class="track"><div class="fill" style="width:88%;background:var(--accent5);"></div></div></div>
+  <div class="skill"><span class="lbl">Prompt Engineering</span><div class="track"><div class="fill" style="width:85%;background:var(--accent4);"></div></div></div>
+  <div class="skill"><span class="lbl">AI Agent 开发</span><div class="track"><div class="fill" style="width:82%;background:var(--accent3);"></div></div></div>
+  <div class="skill"><span class="lbl">云平台 (阿里/华为/百度)</span><div class="track"><div class="fill" style="width:80%;background:var(--accent);"></div></div></div>
+  <div class="skill"><span class="lbl">Docker / K8s</span><div class="track"><div class="fill" style="width:78%;background:var(--accent2);"></div></div></div>
+</section>
+
+<hr class="divider">
+
+<!-- ════════════════════ 二 就业方向 ════════════════════ -->
+<section id="career">
+  <div class="sec-title"><span class="icon">🎯</span> 三大就业方向（国内版）</div>
+  <p class="sec-desc">2026 年国内 AI 行业三条主赛道，建议选其一切入深耕</p>
+
+  <div class="tab-bar" id="careerTabs">
+    <button class="tab-btn active" onclick="switchTab('careerTabs','tab-app')">🔥 AI 应用开发（首推）</button>
+    <button class="tab-btn" onclick="switchTab('careerTabs','tab-algo')">🧪 AI 算法工程</button>
+    <button class="tab-btn" onclick="switchTab('careerTabs','tab-infra')">⚙️ 基础设施 / MLOps</button>
+  </div>
+
+  <!-- 赛道 A -->
+  <div class="tab-panel active" id="tab-app">
+    <div class="cards">
+      <div class="card"><h3>核心技能</h3><ul>
+        <li>大模型 API 调用与微调（Qwen/ChatGLM/DeepSeek）</li>
+        <li>RAG 检索增强生成（Milvus + Dify + BGE）</li>
+        <li>LangChain / LlamaIndex / LLaMA-Factory</li>
+        <li>FastAPI / Gradio / Streamlit 构建交互层</li>
+        <li>Multi-Agent 编排（Coze / LangGraph / CrewAI）</li>
+      </ul></div>
+      <div class="card"><h3>适合人群</h3><ul>
+        <li>有编程基础、想快速入行 AI</li>
+        <li>前端/后端工程师转型首选</li>
+        <li>产品经理/项目经理拓展技术</li>
+        <li><strong>门槛最友好、需求最大</strong></li>
+      </ul></div>
+      <div class="card"><h3>晋升路径</h3><ul>
+        <li>AI 应用开发工程师 (1-2年)</li>
+        <li>→ 高级 AI 工程师 (2-4年)</li>
+        <li>→ AI 技术负责人 / 产品负责人 (4-6年)</li>
+        <li>→ 技术合伙人 / AI Director (6年+)</li>
+      </ul></div>
+    </div>
+    <h4 style="margin:18px 0 10px;">目标公司（AI 原生 + 大厂 AI 部门）</h4>
+    <div class="co-grid">
+      <div class="co-card"><div class="co-name">阿里巴巴</div><div class="co-info"><a class="ext" href="https://tongyi.aliyun.com">通义 Qwen</a> · 杭州</div></div>
+      <div class="co-card"><div class="co-name">字节跳动</div><div class="co-info">豆包 Doubao · 北京/上海</div></div>
+      <div class="co-card"><div class="co-name">腾讯</div><div class="co-info">混元 Hunyuan · 深圳</div></div>
+      <div class="co-card"><div class="co-name">百度</div><div class="co-info"><a class="ext" href="https://cloud.baidu.com/product/wenxinworkshop">文心 ERNIE</a> · 北京</div></div>
+      <div class="co-card"><div class="co-name">华为</div><div class="co-info"><a class="ext" href="https://www.huaweicloud.com/product/modelarts.html">盘古 Pangu</a> · 深圳</div></div>
+      <div class="co-card"><div class="co-name">月之暗面</div><div class="co-info"><a class="ext" href="https://kimi.moonshot.cn">Kimi</a> · 北京</div></div>
+      <div class="co-card"><div class="co-name">智谱 AI</div><div class="co-info"><a class="ext" href="https://open.bigmodel.cn">ChatGLM</a> · 北京</div></div>
+      <div class="co-card"><div class="co-name">深度求索</div><div class="co-info"><a class="ext" href="https://platform.deepseek.com">DeepSeek</a> · 杭州</div></div>
+      <div class="co-card"><div class="co-name">百川智能</div><div class="co-info">百川大模型 · 北京</div></div>
+      <div class="co-card"><div class="co-name">Minimax</div><div class="co-info">多模态 · 上海</div></div>
+      <div class="co-card"><div class="co-name">阶跃星辰</div><div class="co-info">上海</div></div>
+      <div class="co-card"><div class="co-name">零一万物</div><div class="co-info">北京 · 李开复</div></div>
+    </div>
+    <div class="box info" style="margin-top:14px;"><strong>📌 传统行业 AI 化（稳定+不卷）</strong>银行：工商/招商/平安银行 AI Lab | 券商：中信/华泰量化 AI | 医疗：联影智能、推想科技 | 制造：工业富联、海尔智家 AI 部门</div>
+  </div>
+
+  <!-- 赛道 B -->
+  <div class="tab-panel" id="tab-algo">
+    <div class="cards">
+      <div class="card"><h3>核心技能</h3><ul>
+        <li>Transformer 架构深入理解</li>
+        <li>预训练 & 微调策略（LoRA/QLoRA/全量）</li>
+        <li>知识蒸馏、模型剪枝、量化部署</li>
+        <li>分布式训练（DeepSpeed/Megatron）</li>
+        <li>多模态模型（文本+图像+语音）</li>
+      </ul></div>
+      <div class="card"><h3>适合人群</h3><ul>
+        <li>数学基础扎实（线性代数/概率论/优化）</li>
+        <li>已有 ML/DL 经验的深化方向</li>
+        <li>计算机/数学/统计硕博</li>
+        <li>Kaggle/天池竞赛经验者加分</li>
+      </ul></div>
+      <div class="card"><h3>晋升路径</h3><ul>
+        <li>算法工程师 → 高级算法 → 算法专家/研究科学家</li>
+        <li>顶会论文 (NeurIPS/ICML/ICLR/ACL/CVPR) 是硬通货</li>
+        <li>大厂核心 AI Lab 争抢对象</li>
+        <li>高级岗位 80万-150万+</li>
+      </ul></div>
+    </div>
+    <div class="box warn"><strong>⚠️ 隐性门槛</strong>硕博学历基本标配；至少 1 篇一作顶会论文或 Kaggle Grandmaster；纯调参经验在 2026 年算法岗面试中没有竞争力。</div>
+    <h4 style="margin:18px 0 10px;">目标公司</h4>
+    <div class="co-grid">
+      <div class="co-card"><div class="co-name">阿里达摩院</div><div class="co-info">NLP/CV 研究 · 杭州/北京</div></div>
+      <div class="co-card"><div class="co-name">字节 AI Lab</div><div class="co-info">多模态/语音 · 北京/上海</div></div>
+      <div class="co-card"><div class="co-name">腾讯 AI Lab</div><div class="co-info">深圳/广州</div></div>
+      <div class="co-card"><div class="co-name">华为诺亚方舟</div><div class="co-info">深圳/北京/上海</div></div>
+      <div class="co-card"><div class="co-name">智谱 AI</div><div class="co-info">核心模型研发 · 北京</div></div>
+      <div class="co-card"><div class="co-name">深度求索</div><div class="co-info">DeepSeek 核心 · 杭州</div></div>
+    </div>
+  </div>
+
+  <!-- 赛道 C -->
+  <div class="tab-panel" id="tab-infra">
+    <div class="cards">
+      <div class="card"><h3>核心技能</h3><ul>
+        <li>GPU/NPU 异构计算与性能优化</li>
+        <li>分布式训练框架（DeepSpeed/Megatron）</li>
+        <li>模型推理加速（TensorRT/ONNX/vLLM）</li>
+        <li>Docker/Kubernetes 容器编排</li>
+        <li>MLOps 全链路（CI/CD，模型监控）</li>
+      </ul></div>
+      <div class="card"><h3>适合人群</h3><ul>
+        <li>DevOps/SRE 工程师拓展 AI</li>
+        <li>系统工程师、后端架构师</li>
+        <li>C++/CUDA 性能优化经验者</li>
+        <li>喜欢底层系统与工程挑战</li>
+      </ul></div>
+      <div class="card"><h3>晋升路径</h3><ul>
+        <li>AI 平台工程师 → AI 架构师 → 基础设施负责人</li>
+        <li>MLOps 工程师极度稀缺（供需比 ~50%）</li>
+        <li>GPU 优化专家薪资对标量化交易</li>
+        <li>→ 基础架构总监 / CTO</li>
+      </ul></div>
+    </div>
+    <h4 style="margin:18px 0 10px;">目标公司</h4>
+    <div class="co-grid">
+      <div class="co-card"><div class="co-name"><a class="ext" href="https://www.aliyun.com/product/bigdata/learn">阿里云 PAI</a></div><div class="co-info">ML 平台 · 杭州/北京</div></div>
+      <div class="co-card"><div class="co-name"><a class="ext" href="https://www.huaweicloud.com/product/modelarts.html">华为云 ModelArts</a></div><div class="co-info">深圳/东莞</div></div>
+      <div class="co-card"><div class="co-name">华为昇腾</div><div class="co-info">NPU 芯片生态 · 深圳</div></div>
+      <div class="co-card"><div class="co-name">寒武纪</div><div class="co-info">AI 芯片 · 北京/上海</div></div>
+      <div class="co-card"><div class="co-name">壁仞科技</div><div class="co-info">GPU 芯片 · 上海</div></div>
+      <div class="co-card"><div class="co-name">第四范式</div><div class="co-info">ML 平台 · 北京</div></div>
+    </div>
+  </div>
+
+  <br>
+  <h4>💰 国内 AI 岗位薪资参考（一线城市，年薪 RMB）</h4>
+  <div class="tbl-wrap"><table>
+    <tr><th>级别</th><th>年限</th><th>AI 应用开发</th><th>AI 算法工程</th><th>基础设施/MLOps</th></tr>
+    <tr><td>初级</td><td>0-2年</td><td>20-35万</td><td>30-50万</td><td>30-50万</td></tr>
+    <tr><td>中级</td><td>2-4年</td><td>35-55万</td><td>50-80万</td><td>50-75万</td></tr>
+    <tr><td>高级</td><td>4-7年</td><td>55-85万</td><td>80-120万</td><td>75-110万</td></tr>
+    <tr><td>专家/负责人</td><td>7年+</td><td>85-150万</td><td>120-200万+</td><td>110-180万+</td></tr>
+  </table></div>
+  <p class="link-note">数据来源：<a class="ext" href="https://www.zhipin.com">BOSS直聘</a> · <a class="ext" href="https://maimai.cn">脉脉</a> · <a class="ext" href="https://www.nowcoder.com">牛客网</a> 2026 年公开薪资数据</p>
+</section>
+
+<hr class="divider">
+
+<!-- ════════════════════ 三 面试问答 ════════════════════ -->
+<section id="interview">
+  <div class="sec-title"><span class="icon">💡</span> 面试高频问答（35 题）</div>
+  <p class="sec-desc">技术题 30 道 + 国内面试特供 5 道。点击题目展开答案。可在 <a class="ext" href="https://www.nowcoder.com">牛客网</a> 搜目标公司面经对照复习。</p>
+
+  <div class="tab-bar" id="qaTabs">
+    <button class="tab-btn active" onclick="switchTab('qaTabs','qa-basics')">大模型基础 (1-5)</button>
+    <button class="tab-btn" onclick="switchTab('qaTabs','qa-finetune')">微调与适配 (6-9)</button>
+    <button class="tab-btn" onclick="switchTab('qaTabs','qa-rag')">RAG 全链路 (10-13)</button>
+    <button class="tab-btn" onclick="switchTab('qaTabs','qa-agent')">AI Agent (14-16)</button>
+    <button class="tab-btn" onclick="switchTab('qaTabs','qa-security')">AI 安全 (17-18)</button>
+    <button class="tab-btn" onclick="switchTab('qaTabs','qa-edge')">端侧 AI (19-20)</button>
+    <button class="tab-btn" onclick="switchTab('qaTabs','qa-behavior')">综合行为 (21-30)</button>
+    <button class="tab-btn" onclick="switchTab('qaTabs','qa-cn')">国内特供 (31-35)</button>
+  </div>
+
+  <!-- 大模型基础 -->
+  <div class="tab-panel active" id="qa-basics">
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q1：Transformer 的 Self-Attention 是怎么计算的？为什么需要除以 √dₖ？</div>
+    <div class="qa-a"><p><strong>计算流程：</strong></p><ol><li>输入 X 通过 Wq、Wk、Wv 投影得到 Q、K、V</li><li>注意力分数：Score = Q·Kᵀ</li><li>缩放：Score / √dₖ</li><li>Softmax 归一化 → 注意力权重</li><li>加权求和：Output = 权重 · V</li></ol><p><strong>除以 √dₖ 的原因：</strong>当 dₖ 很大时，点积值会很大导致 Softmax 进入梯度极小区。除以 √dₖ 将方差控制为 1，保持梯度稳定。</p><p class="link-note">📺 <a class="ext" href="https://www.bilibili.com/video/BV1pu411o7BE">B站：李沐精读 Attention 论文（逐行代码讲解）</a></p></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q2：Multi-Head Attention 为什么比单头好？</div>
+    <div class="qa-a"><p>不同 Head 关注不同的表示子空间——有的关注位置关系，有的关注语法结构，有的关注语义相似度。多个 Head 并行计算后拼接，让模型同时从多个角度理解输入。</p></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q3：LayerNorm 和 BatchNorm 的区别？为什么 Transformer 用 LN？</div>
+    <div class="qa-a"><ul><li><strong>BN</strong>：在 batch 维度归一化（同一特征在不同样本上）</li><li><strong>LN</strong>：在 feature 维度归一化（同一样本的不同特征上）</li></ul><p>Transformer 用 LN 的原因：序列长度可变（BN 对 padding 敏感）；LN 不依赖 batch size（训练推理一致）；序列模型中 BN 统计量不稳定。</p></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q4：位置编码：Sinusoidal、可学习、RoPE 各有什么优劣？</div>
+    <div class="qa-a"><ul><li><strong>Sinusoidal</strong>：固定正余弦函数。优势：可外推到训练时未见的长度；劣势：不可学习</li><li><strong>可学习</strong>：作为参数训练。优势：灵活适应数据；劣势：无法外推</li><li><strong>RoPE（旋转位置编码）</strong>：2026 年主流。通过旋转矩阵编码相对位置，兼具外推性和可学习性。Qwen/DeepSeek/ChatGLM 均使用</li></ul></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q5：Pre-Norm vs Post-Norm 的区别？</div>
+    <div class="qa-a"><ul><li><strong>Post-Norm</strong>（原论文）：LayerNorm(x + Sublayer(x))</li><li><strong>Pre-Norm</strong>（现在主流）：x + Sublayer(LayerNorm(x))</li></ul><p>Pre-Norm 优势：训练更稳定，不需要 warmup；梯度流动更顺畅。几乎所有现代大模型都用 Pre-Norm。</p></div></div>
+  </div>
+
+  <!-- 微调与适配 -->
+  <div class="tab-panel" id="qa-finetune">
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q6：全量微调、LoRA、QLoRA 的区别？什么时候用哪种？</div>
+    <div class="qa-a"><div class="tbl-wrap"><table><tr><th>方法</th><th>原理</th><th>显存 (7B)</th><th>效果</th><th>适用场景</th></tr><tr><td>全量微调</td><td>更新所有参数</td><td>~56GB</td><td>最好</td><td>数据多、算力充足</td></tr><tr><td>LoRA</td><td>低秩矩阵分解，只训练旁路矩阵</td><td>~16GB</td><td>接近全量</td><td>资源有限，通用首选</td></tr><tr><td>QLoRA</td><td>4-bit 量化 + LoRA</td><td>~8GB</td><td>略低于 LoRA</td><td>消费级显卡</td></tr></table></div><p>选择原则：有 A100 → 全量微调；有 RTX 4090 → LoRA；笔记本显卡 → QLoRA。</p><p class="link-note">🔧 <a class="ext" href="https://search.bilibili.com/all?keyword=LLaMA-Factory+微调+教程">B站：LLaMA-Factory 微调教程</a></p></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q7：LoRA 的 rank (r) 和 alpha 参数怎么选？</div>
+    <div class="qa-a"><ul><li><strong>r（秩）</strong>：通常 8-64。复杂任务（数学推理）r 越大；简单任务（情感分类）r=8 够用。r 翻倍 = 可训练参数翻倍</li><li><strong>alpha</strong>：缩放因子，通常设为 r 的 2 倍（r=16, alpha=32）。alpha 越大，LoRA 对原始权重的修改幅度越大</li></ul></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q8：什么是灾难性遗忘？微调时如何缓解？</div>
+    <div class="qa-a"><p>灾难性遗忘 = 模型微调后新任务变好但原有能力退化。</p><p>缓解方法：LoRA 低秩微调（只改少量参数）；混合数据训练（微调数据+原始预训练数据混合）；渐进式微调；定期在通用 benchmark 上评估。</p></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q9：RLHF 和 DPO 的区别？为什么 DPO 更快？</div>
+    <div class="qa-a"><ul><li><strong>RLHF</strong>：训练 Reward Model → PPO 强化学习。三阶段，复杂且不稳定</li><li><strong>DPO（Direct Preference Optimization）</strong>：直接从偏好对中学习，合并 RM 和 Policy 优化为一步。训练稳定且快</li></ul><p>DPO 是 2025-2026 年对齐方法的主流选择。</p></div></div>
+  </div>
+
+  <!-- RAG -->
+  <div class="tab-panel" id="qa-rag">
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q10：RAG 的完整流程是怎样的？</div>
+    <div class="qa-a"><p><strong>离线索引：</strong>文档加载 → 分块 (Chunking) → Embedding → 存入向量库</p><p><strong>在线检索：</strong>用户查询 → Query 改写/扩展 → Embedding → 向量检索 (Top-K) → 重排序 (Reranker)</p><p><strong>生成：</strong>检索到的文档 + 原始查询 → 构造 Prompt → LLM 生成回答（含引用）</p><p class="link-note">🔧 <a class="ext" href="https://search.bilibili.com/all?keyword=RAG+全流程+实战">B站：RAG 全流程实战教程</a></p></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q11：文档分块 (Chunking) 有哪些策略？</div>
+    <div class="qa-a"><ul><li><strong>固定大小分块</strong>（512 tokens，重叠 128）：最简单，适合通用文档</li><li><strong>语义分块</strong>（基于 Embedding 相似度切分）：段落边界模糊时用</li><li><strong>递归分块</strong>（按段落→句子→词逐级切分）：结构化文本</li><li><strong>文档结构分块</strong>（按 Markdown 标题层级）：技术文档</li></ul><p>2026 年趋势：<strong>智能分块</strong>——用小模型判断最优分块点。</p></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q12：如何评估和优化 RAG 系统的检索质量？</div>
+    <div class="qa-a"><p><strong>评估指标</strong>：Recall@K、MRR、NDCG</p><p><strong>优化策略</strong>：混合检索（BM25 关键词 + 向量语义）；Query 改写（LLM 扩展简短查询）；HyDE（生成假设文档再检索）；Reranker 重排序（BGE-Reranker/Cohere Rerank）；负样本挖掘</p></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q13：向量数据库选型：ChromaDB vs Milvus vs FAISS？</div>
+    <div class="qa-a"><ul><li><strong>ChromaDB</strong>：轻量 Python-native，原型开发首选。→ <a class="ext" href="https://www.trychroma.com">官网</a></li><li><strong>Milvus</strong>：分布式高性能，十亿级向量，生产首选（国产开源）。→ <a class="ext" href="https://milvus.io">官网</a></li><li><strong>FAISS</strong>：Meta 开源算法库，适合嵌入已有系统</li></ul></div></div>
+  </div>
+
+  <!-- Agent -->
+  <div class="tab-panel" id="qa-agent">
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q14：什么是 ReAct 模式？为什么它对 Agent 很重要？</div>
+    <div class="qa-a"><p>ReAct = Reasoning + Acting。模型交替进行「思考」（分析当前状态、制定下一步计划）和「行动」（调用工具、获取信息），循环直到完成。</p><p>纯推理容易产生幻觉（闭门造车），纯行动缺乏规划。ReAct 结合两者，让 Agent 能基于实时反馈调整策略——这是 Agent 区别于简单 LLM 调用的核心能力。</p><p class="link-note">📺 <a class="ext" href="https://www.coze.cn">Coze 扣子</a> 可用可视化方式理解 ReAct 模式</p></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q15：Function Calling 的实现机制是什么？</div>
+    <div class="qa-a"><ol><li>定义 JSON Schema 描述函数（函数名、参数、描述）</li><li>将 Schema 传入 LLM 的 tool_choice 参数</li><li>LLM 判断是否需要调用工具，如需要则输出函数名 + 参数 JSON</li><li>程序执行函数，将结果返回给 LLM</li><li>LLM 基于工具结果继续推理或生成最终回复</li></ol><p>关键细节：需要处理工具调用失败、超时、参数解析错误的 fallback 机制。</p></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q16：Multi-Agent 系统中 Agent 间如何通信和协调？</div>
+    <div class="qa-a"><ul><li><strong>顺序流水线</strong>：A 的输出 → B 的输入（适合线性任务）</li><li><strong>辩论模式</strong>：多个 Agent 独立回答 → 裁判 Agent 选择最佳</li><li><strong>层级模式</strong>：主管 Agent 分配任务 → 执行 Agent 汇报 → 主管汇总</li><li><strong>自由对话</strong>：Agent 间通过消息总线自由交流</li><li><strong>协议标准</strong>：MCP 协议（上下文传递）、Google A2A（Agent 间通信）</li></ul></div></div>
+  </div>
+
+  <!-- AI安全 -->
+  <div class="tab-panel" id="qa-security">
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q17：什么是 Prompt Injection？如何防御？</div>
+    <div class="qa-a"><p>攻击者通过构造恶意输入，覆盖或篡改系统的原始指令。</p><p>常见形式：直接覆盖（"忽略以上所有指令"）、间接注入（在检索文档中嵌入恶意指令）、多语言绕过。</p><p>防御：输入净化（过滤特殊字符/指令模式）；指令隔离（用户输入与系统指令严格分开 role）；输出检测（另一个模型检测合规性）；权限最小化（Agent 能调用的工具/数据范围严格限制）。</p></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q18：越狱 (Jailbreak) 和 Prompt Injection 有什么区别？</div>
+    <div class="qa-a"><ul><li><strong>Jailbreak</strong>：诱导模型绕过安全对齐，产出有害内容。攻击的是模型本身的安全护栏</li><li><strong>Prompt Injection</strong>：劫持应用的系统指令，让应用执行非预期操作。攻击的是应用层的指令设计</li></ul><p>简单区分：Jailbreak 针对模型，Injection 针对应用。</p></div></div>
+  </div>
+
+  <!-- 端侧AI -->
+  <div class="tab-panel" id="qa-edge">
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q19：INT8 和 INT4 量化的核心原理？</div>
+    <div class="qa-a"><ul><li><strong>INT8 量化</strong>：FP32 → 8-bit 整数，q = round(w/scale) + zero_point。每个通道/张量共享 scale 和 zero_point</li><li><strong>INT4 量化</strong>：需更精细分组量化（group_size=128）。大幅降显存（75%）但精度损失更大</li></ul><p>核心技术：GPTQ 用 Optimal Brain Quantization 逐列量化并补偿误差；AWQ 发现 1% 的「显著权重」对精度影响最大，优先保护它们。</p></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q20：什么场景下需要端侧 AI (TinyML)？</div>
+    <div class="qa-a"><ol><li><strong>隐私敏感</strong>：本地处理数据不上传云端（输入法、相册）</li><li><strong>低延迟要求</strong>：自动驾驶、实时翻译不能容忍网络延迟</li><li><strong>离线场景</strong>：没有网络的场景（野外巡检、飞行模式）</li><li><strong>成本控制</strong>：减少 API 调用费用</li><li><strong>可穿戴/IoT</strong>：设备算力有限但需要 AI 能力</li></ol></div></div>
+  </div>
+
+  <!-- 综合行为 -->
+  <div class="tab-panel" id="qa-behavior">
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q21：你做的 AI 项目中遇到的最大技术挑战是什么？怎么解决的？</div>
+    <div class="qa-a"><p>用 <strong>STAR 框架</strong>：</p><ul><li><strong>Situation</strong>：项目背景和目标</li><li><strong>Task</strong>：你的具体任务</li><li><strong>Action</strong>：技术方案（为什么选这个，还有哪些备选）</li><li><strong>Result</strong>：量化结果（延迟降低 X%、准确率提升 Y%）</li></ul></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q22：如果业务方要求一周上线但你评估需三周，怎么沟通？</div>
+    <div class="qa-a"><p>先理解真正的业务需求（往往不是"AI 功能"而是"解决什么问题"），然后提出分阶段交付方案：第 1 周 MVP（用现有 API 拼一个原型）→ 第 2 周优化核心体验 → 第 3 周打磨上线。在第一次沟通时就亮出替代方案，而不是只说"做不完"。</p></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q23：你怎么看待 AI 伦理和合规？</div>
+    <div class="qa-a"><ul><li>数据合规（隐私保护、用户授权）</li><li>内容安全（不生成有害/违法内容）</li><li>公平性（模型对不同人群的识别率是否一致）</li><li>可解释性（用户有权知道 AI 决策的依据）</li><li>人类把关（高风险场景必须有人工审核环节）</li></ul></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q24-30：速查表</div>
+    <div class="qa-a"><div class="tbl-wrap"><table><tr><th>#</th><th>问题</th><th>答题方向</th></tr>
+    <tr><td>Q24</td><td>BERT 和 GPT 的核心架构区别？</td><td>BERT=Encoder-only（双向注意力，适合理解）；GPT=Decoder-only（Causal Attention，适合生成）</td></tr>
+    <tr><td>Q25</td><td>为什么现在主流都是 Decoder-only？</td><td>生成能力强、训练效率高（自回归天然适合大规模预训练）、scaling law 验证更充分</td></tr>
+    <tr><td>Q26</td><td>模型幻觉的成因和缓解方法？</td><td>成因：训练数据噪声+概率生成本质。缓解：RAG 挂载事实库、约束解码、输出校验 Agent</td></tr>
+    <tr><td>Q27</td><td>Chain-of-Thought 为什么有效？</td><td>将复杂推理分解为中间步骤，每一步都在模型"舒适区"，减少跳跃性错误</td></tr>
+    <tr><td>Q28</td><td>Attention 的复杂度是多少？如何优化？</td><td>O(n²)。优化：FlashAttention（IO-aware 分块计算）、Sparse Attention、线性 Attention</td></tr>
+    <tr><td>Q29</td><td>你怎么跟踪 AI 领域的最新进展？</td><td><a class="ext" href="https://www.jiqizhixin.com">机器之心</a> / <a class="ext" href="https://www.paperweekly.cn">PaperWeekly</a> + <a class="ext" href="https://www.bilibili.com">B站</a> 论文解读 + <a class="ext" href="https://modelscope.cn">魔搭</a> 社区 + 动手复现</td></tr>
+    <tr><td>Q30</td><td>未来 2-3 年 AI 行业最大的变化是什么？</td><td>Agent 普遍上岗、端侧 AI 爆发、AI 治理法规落地、多模态成为标配、AI 原生编程范式确立</td></tr></table></div></div></div>
+  </div>
+
+  <!-- 国内特供 -->
+  <div class="tab-panel" id="qa-cn">
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q31：为什么国产模型都用 Decoder-only 架构？</div>
+    <div class="qa-a"><p>Decoder-only 在 scaling law 下表现稳定，训练效率高，社区生态（Qwen/ChatGLM/Llama 系列）都是这个架构，方便对齐和复用。国内 Qwen、DeepSeek、ChatGLM 全是 Decoder-only。</p></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q32：华为昇腾和英伟达 GPU 在 AI 训练上的差异？如何适配？（投华为系必考）</div>
+    <div class="qa-a"><ul><li><strong>昇腾架构</strong>：CANN 算子库替代 CUDA，MindSpore 框架替代 PyTorch</li><li><strong>PyTorch → 昇腾</strong>：有 torch_npu 适配层，大多数模型可一键迁移</li><li>混合精度训练需适配昇腾的融合算子</li><li><strong>面试加分项</strong>：简历中体现昇腾适配经验直接加分</li></ul><p class="link-note">📖 <a class="ext" href="https://www.huaweicloud.com/product/modelarts.html">华为云 ModelArts</a> · <a class="ext" href="https://www.hiascend.com">昇腾社区</a></p></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q33：你用过哪些国产大模型？各自有什么特点？</div>
+    <div class="qa-a"><ul><li><strong>Qwen2.5</strong>（阿里）：生态最完善，<a class="ext" href="https://modelscope.cn">ModelScope</a> 首发，工具链全，多语言支持好</li><li><strong>DeepSeek</strong>（深度求索）：数学和代码能力突出，MoE 架构，<a class="ext" href="https://platform.deepseek.com">API 价格极低</a></li><li><strong>ChatGLM</strong>（智谱）：最早国产开源，Agent 生态（GLM-4-AllTools）成熟</li><li><strong>Kimi</strong>（月之暗面）：超长上下文窗口领先，产品体验优秀</li><li><strong>豆包</strong>（字节）：多模态能力均衡，语音能力突出</li></ul></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q34：ModelScope（魔搭）和 HuggingFace 怎么配合使用？</div>
+    <div class="qa-a"><ul><li>模型获取优先 <a class="ext" href="https://modelscope.cn">ModelScope</a>（国内满速、国产模型首发）</li><li>部分模型从 HuggingFace 通过 <a class="ext" href="https://hf-mirror.com">hf-mirror.com</a> 镜像下载</li><li>Transformers 代码通用，两个平台下载的模型加载方式一样</li><li>ModelScope 的 Swift 微调框架对标 HuggingFace PEFT</li></ul></div></div>
+
+    <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="arrow">▶</span> Q35：你怎么看国内的 AI 行业监管？做项目时怎么确保合规？（高频）</div>
+    <div class="qa-a"><ul><li>生成式 AI 服务需要做<strong>算法备案</strong>（网信办要求）</li><li>内容安全：接入敏感词过滤、输出审核机制</li><li>数据安全：涉及个人信息需脱敏，遵循<strong>《个人信息保护法》</strong></li><li>敏感场景用<strong>私有化部署</strong>而非 API 调用</li></ul><p>展现你懂国内合规要求——这是企业级 AI 开发的刚需，面试官会很认可。</p></div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ════════════════════ 四 行动清单 ════════════════════ -->
+<section id="checklist">
+  <div class="sec-title"><span class="icon">✅</span> 求职行动清单</div>
+  <p class="sec-desc">从学习到拿到 Offer，按这个节奏走不迷路</p>
+
+  <div class="cards">
+    <div class="card" style="border-left:3px solid var(--accent2);">
+      <h3>🎯 简历层面</h3>
+      <ul>
+        <li>3 个 AI 项目放在教育经历前面</li>
+        <li>量化结果："Reranker 将 Recall@5 从 72% 提升至 91%"</li>
+        <li>读 20 份目标 JD，把高频词（RAG/LoRA/LangChain/Dify/Qwen/Milvus）嵌入简历</li>
+        <li><a class="ext" href="https://gitee.com">Gitee</a> 链接放简历最显眼位置，README 含截图/GIF</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--accent);">
+      <h3>📝 面试准备</h3>
+      <ul>
+        <li>每个项目准备 3 分钟录屏 Demo（上传 B站/Gitee，面试发链接）</li>
+        <li>准备「设计企业级 RAG 系统」完整方案（含架构图）</li>
+        <li><a class="ext" href="https://www.nowcoder.com">牛客网</a> LeetCode 中频题 80-100 道（数组/字符串/哈希/树/DP）</li>
+        <li>提前准备 5 个 STAR 故事（冲突、决策、学习、合作、失败）</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--accent3);">
+      <h3>🚀 投递策略</h3>
+      <ul>
+        <li><strong>第 1-5 家</strong>：投练手公司，积累面试经验</li>
+        <li><strong>第 6-30 家</strong>：投目标公司，此时话术已打磨好</li>
+        <li><strong>内推优先</strong>：<a class="ext" href="https://maimai.cn">脉脉</a> 找目标公司员工私信，面试概率高 3-5 倍</li>
+        <li><strong>招聘旺季</strong>：春节后（2-4月）和秋季（9-11月）</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--accent4);">
+      <h3>🏢 招聘渠道</h3>
+      <ul>
+        <li><strong><a class="ext" href="https://www.zhipin.com">BOSS直聘</a></strong> — AI 岗位最多，回复最快</li>
+        <li><strong><a class="ext" href="https://maimai.cn">脉脉</a></strong> — 看内幕、找内推、查薪资</li>
+        <li><strong><a class="ext" href="https://www.nowcoder.com">牛客网</a></strong> — 刷面经、找内推码、模拟面试</li>
+        <li><strong><a class="ext" href="https://www.liepin.com">猎聘</a></strong> — 中高端岗位</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4 style="margin:16px 0 10px;">📋 面试流程参考（典型国内 AI 公司）</h4>
+  <div class="tbl-wrap"><table>
+    <tr><th>轮次</th><th>内容</th><th>时长</th><th>准备重点</th></tr>
+    <tr><td>第一轮</td><td>技术面：项目深挖 + 基础考察</td><td>1h</td><td>项目细节烂熟于心，每个技术决策都能说 why</td></tr>
+    <tr><td>第二轮</td><td>交叉技术面：系统设计 + 工程思维</td><td>45min-1h</td><td>准备 RAG 系统设计题，画架构图</td></tr>
+    <tr><td>第三轮</td><td>Leader/总监面：职业规划 + 行业理解</td><td>30-45min</td><td>准备行为面试 STOR 故事</td></tr>
+    <tr><td>第四轮</td><td>HR 面：薪资期望 + 价值观匹配</td><td>30min</td><td>提前在 <a class="ext" href="https://maimai.cn">脉脉</a> 查好薪资范围</td></tr>
+  </table></div>
+</section>
+
+<hr class="divider">
+
+<!-- ════════════════════ 五 工具平台速查 ════════════════════ -->
+<section id="tools">
+  <div class="sec-title"><span class="icon">🧰</span> 国内工具平台速查</div>
+  <p class="sec-desc">所有链接均可在国内网络环境直接访问。粉色 = 当前最热门，绿色 = 推荐首选。</p>
+
+  <div style="display:flex; flex-direction:column; gap:18px;">
+    <div>
+      <h4 style="margin-bottom:6px;">🎓 学习平台</h4>
+      <div class="tags">
+        <span class="tag hot"><a class="ext" href="https://www.bilibili.com">B站（AI视频第一来源）</a></span>
+        <span class="tag hot"><a class="ext" href="https://www.heywhale.com">和鲸社区 Heywhale</a></span>
+        <span class="tag hot"><a class="ext" href="https://tianchi.aliyun.com">阿里云天池</a></span>
+        <span class="tag"><a class="ext" href="https://www.icourse163.org">中国大学 MOOC</a></span>
+        <span class="tag"><a class="ext" href="https://www.nowcoder.com">牛客网</a></span>
+        <span class="tag rec"><a class="ext" href="https://zh.d2l.ai">李沐 d2l.ai</a></span>
+        <span class="tag"><a class="ext" href="https://developer.aliyun.com">阿里云开发者社区</a></span>
+        <span class="tag"><a class="ext" href="https://scikit-learn.org.cn">Scikit-learn 中文文档</a></span>
+      </div>
+    </div>
+    <div>
+      <h4 style="margin-bottom:6px;">🤖 模型与框架</h4>
+      <div class="tags">
+        <span class="tag hot"><a class="ext" href="https://modelscope.cn">ModelScope 魔搭</a></span>
+        <span class="tag hot"><a class="ext" href="https://hf-mirror.com">hf-mirror.com（HF镜像）</a></span>
+        <span class="tag hot"><a class="ext" href="https://dify.ai">Dify</a></span>
+        <span class="tag hot"><a class="ext" href="https://www.coze.cn">Coze 扣子</a></span>
+        <span class="tag"><a class="ext" href="https://milvus.io">Milvus 向量数据库</a></span>
+        <span class="tag"><a class="ext" href="https://python.langchain.com">LangChain</a></span>
+        <span class="tag"><a class="ext" href="https://fastapi.tiangolo.com/zh/">FastAPI 中文文档</a></span>
+        <span class="tag"><a class="ext" href="https://www.trychroma.com">ChromaDB</a></span>
+        <span class="tag"><a class="ext" href="https://www.gradio.app">Gradio</a></span>
+        <span class="tag"><a class="ext" href="https://streamlit.io">Streamlit</a></span>
+      </div>
+    </div>
+    <div>
+      <h4 style="margin-bottom:6px;">🇨🇳 国产大模型</h4>
+      <div class="tags">
+        <span class="tag hot"><a class="ext" href="https://modelscope.cn/organization/qwen">Qwen2.5 通义千问（阿里）</a></span>
+        <span class="tag hot"><a class="ext" href="https://platform.deepseek.com">DeepSeek（深度求索）</a></span>
+        <span class="tag hot"><a class="ext" href="https://open.bigmodel.cn">ChatGLM（智谱 AI）</a></span>
+        <span class="tag"><a class="ext" href="https://kimi.moonshot.cn">Kimi（月之暗面）</a></span>
+        <span class="tag"><a class="ext" href="https://cloud.baidu.com/product/wenxinworkshop">文心一言（百度）</a></span>
+        <span class="tag"><a class="ext" href="https://tongyi.aliyun.com">通义千问 API（阿里）</a></span>
+      </div>
+    </div>
+    <div>
+      <h4 style="margin-bottom:6px;">☁️ 云计算与算力</h4>
+      <div class="tags">
+        <span class="tag hot"><a class="ext" href="https://www.autodl.com">AutoDL（租GPU，最便宜）</a></span>
+        <span class="tag"><a class="ext" href="https://gpushare.com">恒源云 GPUShare</a></span>
+        <span class="tag rec"><a class="ext" href="https://www.aliyun.com/product/bigdata/learn">阿里云 PAI（免费试用）</a></span>
+        <span class="tag"><a class="ext" href="https://www.huaweicloud.com/product/modelarts.html">华为云 ModelArts</a></span>
+        <span class="tag"><a class="ext" href="https://cloud.baidu.com/product/wenxinworkshop">百度智能云千帆</a></span>
+        <span class="tag"><a class="ext" href="https://cr.console.aliyun.com">阿里云容器镜像</a></span>
+      </div>
+    </div>
+    <div>
+      <h4 style="margin-bottom:6px;">📰 技术资讯</h4>
+      <div class="tags">
+        <span class="tag hot"><a class="ext" href="https://www.jiqizhixin.com">机器之心</a></span>
+        <span class="tag"><a class="ext" href="https://www.qbitai.com">量子位</a></span>
+        <span class="tag"><a class="ext" href="https://www.paperweekly.cn">PaperWeekly</a></span>
+        <span class="tag"><a class="ext" href="https://juejin.cn">掘金</a></span>
+        <span class="tag"><a class="ext" href="https://www.zhihu.com">知乎</a></span>
+        <span class="tag"><a class="ext" href="https://blog.csdn.net">CSDN</a></span>
+        <span class="tag"><a class="ext" href="https://segmentfault.com">思否 SegmentFault</a></span>
+      </div>
+    </div>
+    <div>
+      <h4 style="margin-bottom:6px;">💻 代码与项目</h4>
+      <div class="tags">
+        <span class="tag hot"><a class="ext" href="https://gitee.com">Gitee（必建主页）</a></span>
+        <span class="tag"><a class="ext" href="https://gitee.com/pages">Gitee Pages（免费展示）</a></span>
+        <span class="tag"><a class="ext" href="https://www.aliyun.com/product/yunxiao">阿里云云效 CI/CD</a></span>
+        <span class="tag"><a class="ext" href="https://mirrors.tuna.tsinghua.edu.cn">清华开源镜像站</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 认证 ════════════════════ -->
+<section id="certs">
+  <div class="sec-title"><span class="icon">📜</span> 可选认证考试</div>
+  <p class="sec-desc">证书不是必须（项目 > 证书），但考证过程能系统化知识。按需选择。</p>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>认证</th><th>颁发方</th><th>适合方向</th><th>直达链接</th></tr>
+    <tr><td>阿里云 AI 工程师 ACA</td><td>阿里云</td><td>AI 应用开发</td><td><a class="ext" href="https://www.aliyun.com/training/certification">阿里云认证官网</a></td></tr>
+    <tr><td>阿里云 AI 高级工程师 ACP</td><td>阿里云</td><td>MLOps / 架构</td><td><a class="ext" href="https://www.aliyun.com/training/certification">阿里云认证官网</a></td></tr>
+    <tr><td>华为云 AI 工程师 HCIA</td><td>华为</td><td>AI 应用开发</td><td><a class="ext" href="https://www.huaweicloud.com/training/certification">华为云认证官网</a></td></tr>
+    <tr><td>华为云 AI 高级工程师 HCIP</td><td>华为</td><td>ModelArts / 昇腾</td><td><a class="ext" href="https://www.huaweicloud.com/training/certification">华为云认证官网</a></td></tr>
+    <tr><td>百度 AI 认证</td><td>百度</td><td>AI 应用开发</td><td><a class="ext" href="https://cloud.baidu.com/certification">百度认证官网</a></td></tr>
+  </table></div>
+</section>
+
+<hr class="divider">
+
+<!-- ════════════════════ 避坑 ════════════════════ -->
+<section id="pitfalls">
+  <div class="sec-title"><span class="icon">⚠️</span> 避坑指南</div>
+  <p class="sec-desc">热门 ≠ 有用，认清 AI 学习中的「伪需求」</p>
+  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:14px;">
+    <div class="box warn"><strong>🚫 「学了 Prompt 工程就能拿高薪」</strong>Prompt Engineering 正在变成基本技能（就像会用搜索引擎）。单靠它会成为简历上的红字。</div>
+    <div class="box warn"><strong>🚫 「报个培训班就能年薪百万」</strong>65% 的雇主更看重实战项目。<a class="ext" href="https://gitee.com">Gitee</a> 上 1 个高质量的项目比 10 张证书管用。</div>
+    <div class="box warn"><strong>🚫 「追每个新工具才算跟得上」</strong>每周都有新框架出现。掌握底层原理和工程思维，比会按某个工具的文档复制粘贴重要一百倍。</div>
+    <div class="box warn"><strong>🚫 「所有人都在从零训练模型」</strong>2026 年入行 AI 的主流路径是善用开源模型做应用层创新，不是人人都去捡几千张 GPU 炼大模型。</div>
+  </div>
+</section>
+
+</div><!-- .container -->
+
+<footer style="text-align:center;padding:32px 20px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);margin-top:10px;">
+  <p>数据来源：<a class="ext" href="https://www.zhipin.com">BOSS直聘</a> · <a class="ext" href="https://maimai.cn">脉脉</a> · <a class="ext" href="https://www.nowcoder.com">牛客网</a> · <a class="ext" href="https://tianchi.aliyun.com">阿里云天池</a> · <a class="ext" href="https://modelscope.cn">ModelScope</a> | 2026年6月</p>
+  <p style="margin-top:4px;">所有资源均可在国内网络环境直接访问 🇨🇳 · 换电脑只需复制此 .html 文件</p>
+  <p style="margin-top:8px;font-size:11px;color:var(--border);">把这个文件保存到 U 盘 / 微信收藏 / 邮箱附件 → 随时随地打开</p>
+</footer>
+
+<button class="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
+
+<script>
+// Tab switching
+function switchTab(barId, panelId) {
+  const bar = document.getElementById(barId);
+  bar.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  const container = bar.parentElement;
+  container.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(panelId).classList.add('active');
+}
+
+// Nav highlight on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-inner a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.id; });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// Keyboard shortcut
+document.addEventListener('keydown', e => {
+  if (e.key === 't' && e.ctrlKey) { e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); }
+});
+</script>
+
+</body>
+</html>
